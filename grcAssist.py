@@ -1,17 +1,17 @@
-# grcAssist.py
-# GRC Relevant News Assist
+# vmsAssist.py
+# Vulnerability Management Relevant News Assist
 
 #This program is designed to pull relevant current news articles for keywords defined in a keywords.csv fie.
-#GRC professionals can use this to build a bank of quic-to-access relevant cyber news stories or for a Just-in-Time news story to educate end users.
+#VM professionals can use this to build a bank of quic-to-access relevant cyber news stories or for a Just-in-Time news story to educate end users.
 
-#The python file is called grcAssist.py.
+#The python file is called vmsAssist.py.
 #The keywords.csv file should have keyword(s) per row.  
 #Multiple keywords should be placed on same row with a %20 separating keywords
 #e.g. cybersecurity   OR cybersecurity%20healthcare
 #IF you have row 1 say cybersecurity and row 2 say healthcare, the script will run two separate queries, one for cybersecurity and one for healthcare. This will likely result in less helpful stories.
-#The grcdata.csv file is the output file that the script appends to. It has 5 columns. date,keyword,title,desc,url
+#The vmsdata.csv file is the output file that the script appends to. It has 5 columns. date,keyword,title,desc,url
 #all 3 files should be in the same directory.
-#run "python grcAssist.py"
+#run "python vmsAssist.py"
 #Python 3
 
 #You need to register a free tier API key from newsdata.io. 
@@ -22,6 +22,7 @@
 # Replace your api key in script with the one issued you by Newsdata.io
 
 #Gerald Auger, 7/22/24, SimplyCyber.io
+#David Lacey, 8/29/24
 
 import csv
 import requests
@@ -57,8 +58,8 @@ def search_news(keyword, api_key, category="technology", language="en"):
           "url": article["link"],
         })
       # Write articles to spreadsheet
-      filename = "grcdata.csv"
-      write_to_spreadsheet(articles, filename, keyword)
+      filename = "vmdata.csv" #put file path to vmdata.csv here
+     write_to_spreadsheet(articles, filename, keyword)
     return articles
   except (requests.exceptions.RequestException, KeyError):
     print(f"Error: An error occurred while fetching data from the API.")
@@ -84,8 +85,8 @@ def main():
   Reads keywords from a CSV file or user input and searches for cybersecurity news.
   """
   # Get keywords (modify to read from CSV or get user input)
-  keywords_file = "keywords.csv"  # Replace with your filename
-  keywords = []
+  keywords_file = "keywords.csv"  # Replace with your file path
+ keywords = []
   with open(keywords_file, 'r') as file:
     reader = csv.reader(file)
     for row in reader:
@@ -93,7 +94,6 @@ def main():
 
   # Alternatively, get keywords from user input
   # keywords = input("Enter keywords separated by commas: ").split(",")
-
   api_key = "YOUR_API_KEY_HERE"  # Replace with your actual NewsData.io API key
 
   for keyword in keywords:
