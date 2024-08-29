@@ -1,17 +1,17 @@
-# vmsAssist.py
+# vmAssist.py
 # Vulnerability Management Relevant News Assist
 
-#This program is designed to pull relevant current news articles for keywords defined in a keywords.csv fie.
+#This program is designed to pull relevant current news articles for keywords defined in a vmkeywords.csv fie.
 #VM professionals can use this to build a bank of quic-to-access relevant cyber news stories or for a Just-in-Time news story to educate end users.
 
-#The python file is called vmsAssist.py.
+#The python file is called vmAssist.py.
 #The keywords.csv file should have keyword(s) per row.  
 #Multiple keywords should be placed on same row with a %20 separating keywords
 #e.g. cybersecurity   OR cybersecurity%20healthcare
 #IF you have row 1 say cybersecurity and row 2 say healthcare, the script will run two separate queries, one for cybersecurity and one for healthcare. This will likely result in less helpful stories.
-#The vmsdata.csv file is the output file that the script appends to. It has 5 columns. date,keyword,title,desc,url
+#The vmdata.csv file is the output file that the script appends to. It has 5 columns. date,keyword,title,desc,url
 #all 3 files should be in the same directory.
-#run "python vmsAssist.py"
+#run "python vmAssist.py"
 #Python 3
 
 #You need to register a free tier API key from newsdata.io. 
